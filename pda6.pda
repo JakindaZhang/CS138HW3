@@ -1,0 +1,28 @@
+alphabet: {a, b}
+start: q
+accepting: {q_acc}
+
+q (a, a -> ., q)
+q (b, b -> ., q)
+
+q (., S -> XA, q)
+q (., S -> BY, q)
+q (., S -> ZaZbZ, q)
+
+q (., A -> Aa, q)
+q (., A -> ., q)
+
+q (., B -> Bb, q)
+q (., B -> ., q)
+
+q (., X -> a, q)
+q (., X -> bXa, q)
+
+q (., Y -> b, q)
+q (., Y -> bYa, q)
+
+q (., Z -> Za, q)
+q (., Z -> Zb, q)
+q (., Z -> ., q)
+
+q (., . -> ., q_acc)
