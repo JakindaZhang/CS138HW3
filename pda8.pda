@@ -1,0 +1,15 @@
+alphabet: {0, 1}
+start: q0
+accepting: {qf}
+
+q0 (_, _ -> S$, q)
+q (_, $ -> _, qf)
+
+q (0, 0 -> _, q)
+q (1, 1 -> _, q)
+
+q (_, S -> _, q)          
+q (_, S -> 0S11S, q)
+q (_, S -> 1S01S, q)
+q (_, S -> 11S0S, q)
+

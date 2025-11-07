@@ -1,0 +1,19 @@
+alphabet: {0, 1}
+start: q0
+accepting: {qacc}
+
+q0 (_, _ -> $, qPushNotSeen)
+
+qPushNotSeen (1, _ -> X, qPushNotSeen)
+
+qPushNotSeen (0, _ -> X, qPushSeen)
+
+qPushSeen (0, _ -> X, qPushSeen)
+qPushSeen (1, _ -> X, qPushSeen)
+
+qPushSeen (_, _ -> _, qPop)
+
+qPop (0, X -> _, qPop)
+qPop (1, X -> _, qPop)
+
+qPop (_, $ -> _, qacc)
