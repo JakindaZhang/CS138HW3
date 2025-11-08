@@ -2,22 +2,22 @@ alphabet: {0, 1}
 start: q0
 accepting: {qacc}
 
-q0 (_, _ -> S$, q)
+q0 (_, _ -> $, qplus)
 
-q (0, 0 -> _, q)
-q (1, 1 -> _, q)
+qplus (1, X -> XX, qplus)
+qplus (1, $ -> X$, qplus)
 
-q (_, S -> _, q)
-q (_, S -> SS, q)
+qplus (0, X -> _, qpop)
+qplus (0, $ -> XX$, qminus)
 
-q (_, S -> 0S11, q)
-q (_, S -> 1S01, q)
-q (_, S -> 1S10, q)
-q (_, S -> 01S1, q)
-q (_, S -> 10S1, q)
-q (_, S -> 11S0, q)
-q (_, S -> 011S, q)
-q (_, S -> 101S, q)
-q (_, S -> 110S, q)
+qpop  (_, X -> _, qplus)
+qpop  (_, $ -> X$, qminus) 
 
-q (_, $ -> _, qacc)
+qplus (_, $ -> _, qacc)
+
+qminus (1, X -> _, qminus)
+
+qminus (_, $ -> $, qplus)
+
+qminus (0, X -> XXX, qminus)
+qminus (0, $ -> XX$, qminus)
